@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #f8f9fa;
+}
+
+.table-index {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.table-index a {
+    margin-right: 1rem;
+}
+
+/* Para el color principal */
+.section h2 {
+    color: #007bff;
+    /* Azul vibrante */
+}
+
+/* Para el fondo */
+.landing-page {
+    background-color: #f8f9fa;
+    /* Gris claro */
+}
+
+/* Para el texto y otros elementos */
+.title,
+.button-container a,
+.button-container button {
+    color: #ffffff;
+    /* Blanco */
+}
+
+/* Para los botones e elementos interactivos */
+.button-container a,
+.button-container button {
+    background-color: #ff6b00;
+    /* Naranja brillante */
+}
+
+.button-container a,
+.button-container button {
+    background-color: #ff6b00;
+    /* Naranja brillante */
+    transition: background-color 0.3s ease;
+    /* Transición suave */
+}
+
+.button-container a:hover,
+.button-container button:hover {
+    background-color: #ff8c40;
+    /* Cambio de color al pasar el ratón */
+}

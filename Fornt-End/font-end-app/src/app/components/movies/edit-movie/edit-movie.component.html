@@ -1,0 +1,7 @@
+<h2>Editar Pelicula</h2>
+
+<app-form-movie [genresNotSelected]="unselectedGenres" [genresSelected]="selectedGenres"
+    [cinemasSelected]="selectedCinemas" [cinemasNotSelected]="unselectedCinemas" [actorsSelected]="actorsSelected"
+    [model]="model" *ngIf="model" (onSubmit)="saveChanges($event)"></app-form-movie>
+
+<mat-spinner *ngIf="!model"></mat-spinner>

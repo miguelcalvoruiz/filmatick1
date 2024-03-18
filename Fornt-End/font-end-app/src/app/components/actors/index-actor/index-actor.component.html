@@ -1,0 +1,39 @@
+<h2>Actores</h2>
+
+<button mat-flat-button color="primary" routerLink="/actors/add">
+    Crear Nuevo
+</button>
+
+<app-generic-list [list]="actors">
+    <ng-container content>
+        <table #table mat-table [dataSource]="actors" class="mat-elevation-z8 table-index">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let element">
+                    <a routerLink="/actors/edit/{{element.id}}" mat-flat-button color="primary">Editar</a>
+                    <button mat-flat-button color="warn"
+                    [swal]="{title: 'Confirmacion',
+                    text: '¿Estas seguro que desea eliminar el registro?',
+                    showCancelButton: true}"
+                    (confirm)="deleteActor(element.id)">Borrar</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsToShow"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToShow"></tr>
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons
+            [length]="quantityTotalRecords" [pageSize]="quantityRecordsToShow" (page)="updatePagination($event)">
+        </mat-paginator>
+    </ng-container>
+    <ng-container empty>
+        <p>No hay actores para mostrar</p>
+    </ng-container>
+</app-generic-list>

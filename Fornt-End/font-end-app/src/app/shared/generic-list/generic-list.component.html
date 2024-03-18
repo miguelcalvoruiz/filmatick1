@@ -1,0 +1,21 @@
+<div *ngIf="!list || list.length === 0">
+  <span #loading>
+    <ng-content select="[loading]"></ng-content>
+  </span>
+  <span *ngIf="!loading.innerHTML.trim()">
+    <img src="https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif">
+  </span>
+</div>
+
+<div *ngIf="list && list.length > 0">
+  <ng-content select="[content]"></ng-content>
+</div>
+
+<div *ngIf="list && list.length === 0">
+  <span #empty>
+    <ng-content select="[empty]"></ng-content>
+  </span>
+  <span *ngIf="!empty.innerHTML.trim()">
+    <p>No hay películas para mostrar</p>
+  </span>
+</div>

@@ -1,0 +1,35 @@
+<h2>Buscar Peliculas</h2>
+
+<mat-spinner *ngIf="!movies"></mat-spinner>
+
+<form [formGroup]="form" *ngIf="movies">
+    <mat-form-field appearance="outline">
+        <mat-label>Titulo</mat-label>
+        <input formControlName="title" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Genero</mat-label>
+        <mat-select formControlName="genreId">
+            <mat-option [value]="0">--Seleccione un genero--</mat-option>
+            <mat-option *ngFor="let genre of genres" [value]="genre.id">{{genre.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div>
+        <mat-checkbox formControlName="nextReleases">Proximos estrenos</mat-checkbox>
+    </div>
+
+    <div>
+        <mat-checkbox formControlName="onCinemas">En cines</mat-checkbox>
+    </div>
+
+    <div>
+        <button mat-flat-button (click)="clearForm()" color="warn">Limpiar</button>
+    </div>
+</form>
+
+<app-movies-list [movies]="movies" (deleted)="reloadData()"></app-movies-list>
+
+<mat-paginator [length]="quantityElements" [pageSize]="quantityElementsToShow"
+    [pageSizeOptions]="[5, 10, 20]" (page)="updatePagination($event)"></mat-paginator>

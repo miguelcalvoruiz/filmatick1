@@ -1,0 +1,30 @@
+<app-generic-list [list]="movies">
+  <ng-container content>
+    <div class="movies-container">
+      <div *ngFor="let movie of movies; let index = index" class="movie-container">
+        <a routerLink="/movie/{{ movie.id }}">
+          <img [src]="movie.poster" alt="Poster" style="width: 260px; height: 360px;">
+        </a>
+        <div class="info-container">
+          <p class="title">
+            <a routerLink="/movie/{{ movie.id }}">{{ movie.title }}</a>
+          </p>
+          <app-authorized [role]="'admin'">
+            <ng-container authorized>
+              <div class="button-container">
+                <a mat-flat-button color="primary" [routerLink]="'movies/edit/' + movie.id">
+                  Editar
+                </a>
+                <button mat-flat-button color="warn" type="button" [swal]="{title: 'Confirmacion',
+                text: '¿Estas seguro que desea eliminar el registro?',
+                showCancelButton: true}" (click)="deleteMovie(movie.id)">
+                  Borrar
+                </button>
+              </div>
+            </ng-container>
+          </app-authorized>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-generic-list>

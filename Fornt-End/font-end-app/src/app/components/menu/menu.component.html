@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+    <span>
+        <a routerLink="" mat-button>
+            <span class="filmatick-title">
+                <mat-icon>local_movies</mat-icon>
+                FilmaticK
+            </span>
+        </a>
+    </span>
+
+    <div>
+        <a mat-button routerLink="movies/search">
+            <mat-icon>search</mat-icon>Buscar Películas
+        </a>
+    </div>
+
+    <app-authorized [role]="'admin'">
+        <ng-container authorized>
+            <div class="dropdown-container">
+                <button mat-button class="dropdown-trigger">
+                    Gestión <mat-icon>arrow_drop_down</mat-icon>
+                </button>
+                <div class="dropdown-content">
+                    <a mat-button routerLink="genres">Géneros</a>
+                    <a mat-button routerLink="actors">Actores</a>
+                    <a mat-button routerLink="cinemas">Cines</a>
+                    <a mat-button routerLink="movies/add">Crear Película</a>
+                    <a mat-button routerLink="users">Usuarios</a>
+                </div>
+            </div>
+        </ng-container>
+    </app-authorized>
+
+    <div class="space"></div>
+
+
+    <app-authorized>
+        <ng-container authorized>
+            <span *ngIf="securityService.isLogged()">Hola, {{securityService.getFieldJWT('email')}}</span>
+            <a mat-button *ngIf="securityService.isLogged()" class="logout-button" (click)="securityService.logout()">
+                <mat-icon>logout</mat-icon>
+            </a>
+        </ng-container>
+        <ng-container noAuthorized>
+            <a mat-button routerLink="login">Login</a>
+            <a mat-button routerLink="register">Registro</a>
+        </ng-container>
+    </app-authorized>
+</mat-toolbar>

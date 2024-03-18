@@ -1,0 +1,10 @@
+<h2>Crear Película</h2>
+
+<app-form-movie 
+*ngIf="cinemasNotSelected" 
+[errors]="errors" 
+[genresNotSelected]="genresNotSelected"
+[cinemasNotSelected]="cinemasNotSelected"
+(onSubmit)="saveChanges($event)"></app-form-movie>
+
+<mat-spinner *ngIf="!cinemasNotSelected"></mat-spinner>

@@ -1,0 +1,18 @@
+<div class="container">
+    <ul>
+        <li *ngFor="let genre of unselected; let index = index" (click)="select(genre, index)">
+            {{ genre.value }}
+        </li>        
+    </ul>
+
+    <div class="buttons">
+        <button type="button" (click)="selectAll()">>></button>
+        <button type="button" (click)="unselectAll()"><<</button>
+    </div>
+
+    <ul>
+        <li *ngFor="let genre of selected; let index = index" (click)="unselect(genre, index)">
+            {{ genre.value }}
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,49 @@
+<app-show-errors [errors]="errors"></app-show-errors>
+
+<form (submit)="saveChanges()" [formGroup]="form">
+    <mat-form-field appearance="outline">
+        <mat-label>Titulo</mat-label>
+        <input formControlName="title" matInput>
+        <mat-error> El campo titulo es requerido </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Trailer</mat-label>
+        <input formControlName="trailer" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Fecha de lanzamiento</mat-label>
+        <input formControlName="releaseDate" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <h4>Selecciona un Poster</h4>
+    <app-input-img [urlImgCurrent]="model?.poster || ''" (fileSelected)="fileSelected($event)"></app-input-img>
+
+    <h4>Resumen de la pelicula</h4>
+    <app-input-markdown (changeMarkdown)="changeMarkdown($event)" [contentMarkdown]="model?.summary || ''"
+        [placeHolderTextArea]="'Resumen'"></app-input-markdown>
+
+
+    <h4>Seleccione los generos</h4>
+    <app-selector-multiple [unselected]="genresNotSelected" [selected]="genresSelected"></app-selector-multiple>
+
+    <div class="container-checkbox">
+        <input type="checkbox" formControlName="onCinemas"> On Cinemas
+    </div>
+
+    <div *ngIf="form.get('onCinemas')?.value === true">
+        <h4>Seleccione los cines</h4>
+        <app-selector-multiple [unselected]="cinemasNotSelected" [selected]="cinemasSelected"></app-selector-multiple>
+    </div>
+
+    <app-autocomplete-actors [actorsSelected]="actorsSelected"></app-autocomplete-actors>
+
+
+    <div>
+        <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+        <a mat-stroked-button routerLink="/">Cancelar</a>
+    </div>
+</form>
