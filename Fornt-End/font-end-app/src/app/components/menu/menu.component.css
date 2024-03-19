@@ -10,6 +10,12 @@
     font-size: 24px;
     font-weight: bold;
     color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.title-text {
+    margin-left: 5px;
 }
 
 .dropdown-container {
@@ -59,12 +65,10 @@
 .logout-button {
     color: #ff6b00;
     transition: color 0.3s ease;
-    /* Transición suave */
 }
 
 .logout-button:hover {
     color: #ff2800;
-    /* Cambio de color al pasar el ratón */
 }
 
 @keyframes fadeIn {
