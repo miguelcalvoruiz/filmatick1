@@ -1,8 +1,77 @@
-mat-chip-list{
-    display: inline-block;
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.movie-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #ff6b00; /* Cambiar al color principal */
+}
+
+.genre-chips {
     margin-bottom: 0.5rem;
 }
 
-mat-chip{
-    cursor: pointer;
+.movie-info {
+    margin-bottom: 1rem;
 }
+
+.release-date, .average-vote, .user-vote {
+    margin-right: 1rem;
+}
+
+.poster-trailer {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.movie-poster {
+    width: 225px;
+    height: 315px;
+    margin-right: 1rem;
+}
+
+.movie-trailer {
+    flex: 1;
+}
+
+.summary, .cast {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #007bff; /* Cambiar al color principal */
+}
+
+.actor-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.actor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.actor-photo {
+    width: 50px;
+    margin-right: 1rem;
+}
+
+.actor-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.actor-name {
+    font-weight: bold;
+}
+
+.map-container {
+    width: auto;
+}
+
